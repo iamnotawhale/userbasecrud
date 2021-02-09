@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.zhigalin.userbasecrud.dao.UserDao;
+import ru.zhigalin.userbasecrud.model.Role;
 import ru.zhigalin.userbasecrud.model.User;
 
 import java.util.List;
@@ -48,7 +49,25 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public User getById(int id) {
+    public User getById(Long id) {
         return userDao.getById(id);
+    }
+
+    @Transactional
+    @Override
+    public User getUserByName(String login) {
+        return userDao.getUserByName(login);
+    }
+
+    @Transactional
+    @Override
+    public Role getRoleByName(String name) {
+        return userDao.getRoleByName(name);
+    }
+
+    @Transactional
+    @Override
+    public void addRole(Role role) {
+        userDao.addRole(role);
     }
 }
